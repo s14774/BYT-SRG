@@ -1,0 +1,33 @@
+rest(){ curl -H "Content-Type: application/json" -X $1 -d "$2" $3; echo -e '\n'; }
+
+#Pobierz informację o wszystkich filmach
+rest GET "" http://127.0.0.1:8080/filmweb/rest/movie
+
+#Dodanie filmu
+rest POST '{"name":"Sen zimowy niedźwiedzia brunatnego"}' http://127.0.0.1:8080/filmweb/rest/movie
+
+#Dodanie komentarza do filmu o id 2
+rest POST '{"comment":"Sen to dobra sprawa"}' http://localhost:8080/filmweb/rest/movie/2/comments
+
+#Wyświetlenie filmu o id 2
+rest GET "" http://127.0.0.1:8080/filmweb/rest/movie/2
+
+#Aktualizacja filmu o id 2
+rest PUT '{"name":"Sen zimowy niedźwiedzia polarnego"}' http://127.0.0.1:8080/filmweb/rest/movie/2
+
+#Usunięcie filmu o id 3
+rest DELETE "" http://127.0.0.1:8080/filmweb/rest/movie/3
+
+#Wyświetlanie komentarzy filmu od id 2
+rest GET "" http://127.0.0.1:8080/filmweb/rest/movie/2/comments
+
+#Usunięcie komentarza o id 2 z filmu o id 5
+rest DELETE "" http://127.0.0.1:8080/filmweb/rest/movie/5/comments/2
+
+#Dodanie oceny do filmu o id 2
+rest POST '{"rating":3}' http://localhost:8080/filmweb/rest/movie/2/rating
+
+#Pobranie oceny filmu o id 2
+rest GET "" http://127.0.0.1:8080/filmweb/rest/movie/2/rating
+
+rest POST '{"name":"Mateusz","surname":"Szymorski"}' http://127.0.0.1:8080/filmweb/rest/actor
