@@ -22,9 +22,9 @@ public class BicyclePathResources {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response Add(BicyclePath BicyclePath) {
-        db.add(BicyclePath);
-        return Response.ok(BicyclePath.getId()).build();
+    public Response Add(BicyclePath bicyclePath) {
+        db.add(bicyclePath);
+        return Response.ok(bicyclePath.getId()).build();
     }
 
     @GET

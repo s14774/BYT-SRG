@@ -4,4 +4,6 @@
 /.settings/
 /ENV/glassfish4.1/glassfish/domains/domain1/logs/
 /ENV/glassfish4.1/glassfish/domains/domain1/osgi-cache/*
-*.info
+ENV/glassfish4.1/glassfish/domains/domain1/config/local-password
+ENV/glassfish4.1/glassfish/domains/domain1/config/pid.prev
+ENV/glassfish4.1/glassfish/domains/domain1/config/pid

@@ -5,4 +5,5 @@ ENV/hsqldb/runServer.sh
 . Należy uruchomić GlassFish
 ENV/glassfish4.1/bin/asadmin start-domain
 . Należy zahostować projekt na serwerze glassfish
-ENV/glassfish4.1/bin/asadmin deploy BYT-SRG.war
+ENV/glassfish4.1/bin/asadmin deploy target/BYT-SRG.war
+
