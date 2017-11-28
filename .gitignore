@@ -2,3 +2,6 @@
 /target/
 /.idea/
 /.settings/
+/ENV/glassfish4.1/glassfish/domains/domain1/logs/
+/ENV/glassfish4.1/glassfish/domains/domain1/osgi-cache/*
+*.info

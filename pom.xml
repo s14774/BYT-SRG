@@ -32,7 +32,7 @@
     </dependencies>
 
     <build>
-        <finalName>filmweb</finalName>
+        <finalName>BYT-SRG</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
