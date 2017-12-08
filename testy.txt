@@ -6,26 +6,11 @@ rest GET "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
 #Dodanie ścieżki rowerowej
 rest POST '{"name":"Grunwaldzka"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
 
-#Dodanie komentarza do ścieżki rowerowej o id 2
-rest POST '{"comment":"Sen to dobra sprawa"}' http://localhost:8080/BYT-SRG/rest/bicyclepath/2/comments
-
 #Wyświetlenie informacji o ścieżce rowerowej o id 2
 rest GET "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
 
 #Aktualizacja ścieżki rowerowej o id 2
-rest PUT '{"name":"Sen zimowy niedźwiedzia polarnego"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
+rest PUT '{"name":"Grunwaldzka 83"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
 
-#Usunięcie ścieżki rowerowej o id 3
-rest DELETE "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/3
-
-#Wyświetlanie komentarzy ścieżki rowerowej od id 2
-rest GET "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/comments
-
-#Usunięcie komentarza o id 2 z ścieżki rowerowej o id 5
-rest DELETE "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/5/comments/2
-
-#Dodanie oceny do ścieżki rowerowej o id 2
-rest POST '{"rating":3}' http://localhost:8080/BYT-SRG/rest/bicyclepath/2/rating
-
-#Pobranie oceny ścieżki rowerowej o id 2
-rest GET "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/rating
+#Usunięcie ścieżki rowerowej o id 2
+rest DELETE "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
