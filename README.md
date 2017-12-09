@@ -11,4 +11,9 @@ ENV/glassfish4.1/bin/asadmin deploy target/BYT-SRG.war
 http://127.0.0.1:4848
 . Aplikacja powinna być dostępna pod adresem
 http://127.0.0.1:8080/BYT-SRG/
-https://127.0.0.1:8181/BYT-SRG/ 
+https://127.0.0.1:8181/BYT-SRG/
+
+. Usuwanie aplikacji z GlassFisha 
+ENV/glassfish4.1/bin/asadmin undeploy BYT-SRG
+. Wyłączanie serwera GlassFish
+ENV/glassfish4.1/bin/asadmin stop-domain
