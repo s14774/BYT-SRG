@@ -1,4 +1,4 @@
-rest(){ curl -H "Content-Type: application/json" -X $1 -d "$2" $3; echo -e '\n'; }
+rest(){ curl -sH "Content-Type: application/json" -X $1 -d "$2" $3; echo -e '\n'; }
 
 #Pobierz informację o wszystkich ścieżkach rowerowych
 rest GET "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
@@ -14,3 +14,18 @@ rest PUT '{"name":"Grunwaldzka 83"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclep
 
 #Usunięcie ścieżki rowerowej o id 2
 rest DELETE "" http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
+
+#Dodanie przejazdu na ścieżce rowerowej o id 2
+rest POST '{}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
+
+#Pobranie informacji o wszystkich przejazdach daną ścieżką
+rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/all
+
+#Pobranie informacji o przejazdach daną ścieżką z ostatnich 15 minut
+rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/15minutes
+
+#Importowanie przejazdu na ścieżce rowerowej o id 2
+rest POST '{"date":"2018-01-10T20:19:02.881+01:00"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/import
+
+#Importowaniu listy przejazdów na danej ścieżce
+rest POST '[{"date":"2018-01-10T20:19:02.881+01:00"},{"date":"2018-01-10T22:05:09.311+01:00"}]' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/importMultiple

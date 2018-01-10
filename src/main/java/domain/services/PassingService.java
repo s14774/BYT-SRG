@@ -1,9 +1,10 @@
 package domain.services;
 
-import domain.Passing;
+import domain.BicyclePath;
 import domain.Passing;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PassingService {
@@ -26,6 +27,24 @@ public class PassingService {
             if (p.getId() == id)
                 return p;
         return null;
+    }
+
+    public List<Passing> getWhereBicyclePath(BicyclePath bicyclePath) {
+        if(bicyclePath == null) return new ArrayList<>();
+        List<Passing> result = new ArrayList<>();
+        for (Passing p : db)
+            if (p.getBicyclePath().equals(bicyclePath))
+                result.add(p);
+        return result;
+    }
+
+    public List<Passing> getFromLast15minutes(BicyclePath bicyclePath) {
+        if(bicyclePath == null) return new ArrayList<>();
+        List<Passing> result = new ArrayList<>();
+        for (Passing p : db)
+            if (p.getBicyclePath().equals(bicyclePath) && new Date(System.currentTimeMillis() - (15 * 60 * 1000)).before(p.getDate()))
+                result.add(p);
+        return result;
     }
 
     public void add(Passing p) {
