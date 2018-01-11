@@ -21,7 +21,10 @@ rest POST '{}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2
 #Pobranie informacji o wszystkich przejazdach daną ścieżką
 rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/all
 
-#Pobranie informacji o przejazdach daną ścieżką z ostatnich 15 minut
+#Pobranie pełnych informacji o przejazdach daną ścieżką z ostatnich 15 minut
+rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/full15minutes
+
+#Pobranie informacji o ilości przejazdów daną ścieżką w ciągu ostatnich 15 minut
 rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/15minutes
 
 #Importowanie przejazdu na ścieżce rowerowej o id 2
