@@ -107,11 +107,20 @@ public class BicyclePathResources {
     }
     //GetAllFrom15Minutes
     @GET
-    @Path("/{id}/15minutes")
+    @Path("/{id}/full15minutes")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Passing> getPassings15Minutes(@PathParam("id") int id) {
-
         BicyclePath bp = bpdb.get(id);
         return pdb.getFromLast15minutes(bp);
+    }
+    //GetAmountFrom15Minutes
+    @GET
+    @Path("/{id}/15minutes")
+    public Response getPassingsAmount15Minutes(@PathParam("id") int id) {
+        BicyclePath bp = bpdb.get(id);
+        Integer amount = pdb.getAmountFromLast15minutes(bp);
+        if (amount == null)
+            return Response.status(404).build();
+        return Response.ok(amount).build();
     }
 }

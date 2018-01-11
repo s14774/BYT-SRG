@@ -11,3 +11,9 @@ rest POST '{"name":"Kartuska"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
 rest POST '{"name":"Armii Krajowej"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
 rest POST '{"name":"Lostowicka"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
 rest POST '{"name":"Jabloniowa"}' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath
+
+for id in {2..11}
+do
+  rest POST "$(cat $id.bp.dump)" "http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/$id/importMultiple";
+done
+

@@ -3,7 +3,8 @@
 rest(){ curl -sH "Content-Type: application/json" -X $1 -d "$2" $3; echo; }
 randomizer(){ q=$1; i=$((q+(RANDOM%5)-2)); if (("$i"<"0")); then i="0"; fi; echo "$i";return $i; }
 path2app="http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath"
-weights=(0 0 5 3 8 4 6 9 4 7 4 6)
+weights=()
+for i in {1..50}; do weights+=($(((RANDOM%7)+3))); done;
 probabilityNumber="15"
 amplitude="2"
 otime="0"

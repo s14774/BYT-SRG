@@ -47,6 +47,15 @@ public class PassingService {
         return result;
     }
 
+    public Integer getAmountFromLast15minutes(BicyclePath bicyclePath) {
+        if(bicyclePath == null) return null;
+        Integer result = 0;
+        for (Passing p : db)
+            if (p.getBicyclePath().equals(bicyclePath) && new Date(System.currentTimeMillis() - (15 * 60 * 1000)).before(p.getDate()))
+                result++;
+        return result;
+    }
+
     public void add(Passing p) {
         p.setId(++currentID);
         db.add(p);
