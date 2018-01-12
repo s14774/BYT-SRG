@@ -2,6 +2,7 @@ package rest;
 
 import domain.BicyclePath;
 import domain.Passing;
+import domain.helpers.HourQuantity;
 import domain.services.BicyclePathService;
 import domain.services.PassingService;
 
@@ -80,7 +81,6 @@ public class BicyclePathResources {
         pdb.add(passing);
         return Response.ok(passing.getId()).build();
     }
-    //usun przejazd
     //import
     @POST
     @Path("/{id}/import")
@@ -122,5 +122,14 @@ public class BicyclePathResources {
         if (amount == null)
             return Response.status(404).build();
         return Response.ok(amount).build();
+    }
+    //GetAmountPerHourFromLastWeek
+    @GET
+    @Path("/{id}/week")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<HourQuantity> getPassingsAmountFromLastWeek(@PathParam("id") int id) {
+        BicyclePath bp = bpdb.get(id);
+        List<HourQuantity> passings = pdb.getAmountFromLastWeek(bp);
+        return passings;
     }
 }

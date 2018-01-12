@@ -2,8 +2,10 @@ package domain.services;
 
 import domain.BicyclePath;
 import domain.Passing;
+import domain.helpers.HourQuantity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -51,9 +53,46 @@ public class PassingService {
         if(bicyclePath == null) return null;
         Integer result = 0;
         for (Passing p : db)
-            if (p.getBicyclePath().equals(bicyclePath) && new Date(System.currentTimeMillis() - (15 * 60 * 1000)).before(p.getDate()))
+            if (
+                p.getBicyclePath().equals(bicyclePath) &&
+                new Date(System.currentTimeMillis() - (15 * 60 * 1000)).before(p.getDate()) &&
+                new Date().after(p.getDate())
+            )
                 result++;
         return result;
+    }
+
+    public List<HourQuantity> getAmountFromLastWeek(BicyclePath bicyclePath) {
+        if(bicyclePath == null) return new ArrayList<>();
+        List<HourQuantity> hql = new ArrayList<>();
+
+        List<Passing> passingsBP = new ArrayList<>();
+        for (Passing p : db)
+            if (
+                p.getBicyclePath().equals(bicyclePath) &&
+                new Date(System.currentTimeMillis() - (7 * 24 * 60 * 60 * 1000)).before(p.getDate()) &&
+                new Date().after(p.getDate())
+            )
+                passingsBP.add(p);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.set(Calendar.MINUTE,0);
+        cal.set(Calendar.SECOND,0);
+        cal.set(Calendar.MILLISECOND,0);
+
+        for (int i=7*24; i>=0; i--){
+            HourQuantity hq = new HourQuantity((cal.get(Calendar.HOUR_OF_DAY)-i+24*7)%24);
+            for (Passing p : passingsBP)
+
+                if (
+                    new Date(cal.getTimeInMillis() - (i * 60 * 60 * 1000)).before(p.getDate()) &&
+                    new Date(cal.getTimeInMillis() - ((i-1) * 60 * 60 * 1000)).after(p.getDate())
+                )
+                    hq.addQuantity(1);
+            hql.add(hq);
+        }
+        return hql;
     }
 
     public void add(Passing p) {

@@ -32,3 +32,7 @@ rest POST '{"date":"2018-01-10T20:19:02.881+01:00"}' http://127.0.0.1:8080/BYT-S
 
 #Importowaniu listy przejazdów na danej ścieżce
 rest POST '[{"date":"2018-01-10T20:19:02.881+01:00"},{"date":"2018-01-10T22:05:09.311+01:00"}]' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/importMultiple
+
+#Pobranie informacji o ilości przejazdów daną ścieżką w ciągu ostatniego tygodnia z podziałem na godziny
+rest GET '' http://127.0.0.1:8080/BYT-SRG/rest/bicyclepath/2/week
+
