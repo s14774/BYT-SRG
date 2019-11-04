@@ -1,19 +1,38 @@
-. Należy zrobić paczkę za pomocą komendy
+# Uruchamianie
+1. Należy zrobić paczkę za pomocą komendy
+```
 mvn package
-. Należy uruchomić HSQL
+```
+2. Należy uruchomić HSQL
+```
 ENV/hsqldb/runServer.sh
-. Należy uruchomić GlassFish
+```
+3. Należy uruchomić GlassFish
+```
 ENV/glassfish4.1/bin/asadmin start-domain
-. Należy zahostować projekt na serwerze glassfish
+```
+4. Należy zahostować projekt na serwerze glassfish
+```
 ENV/glassfish4.1/bin/asadmin deploy target/BYT-SRG.war
+```
 
-. Panel zarządzający powinien być pod adresem
+# Zarządzanie
+Panel zarządzający powinien być pod adresem
+```
 http://127.0.0.1:4848
-. Aplikacja powinna być dostępna pod adresem
+```
+Aplikacja powinna być dostępna pod adresem
+```
 http://127.0.0.1:8080/BYT-SRG/
 https://127.0.0.1:8181/BYT-SRG/
+```
 
-. Usuwanie aplikacji z GlassFisha 
+# Wyłączanie
+Usuwanie aplikacji z GlassFisha 
+```
 ENV/glassfish4.1/bin/asadmin undeploy BYT-SRG
-. Wyłączanie serwera GlassFish
+```
+Wyłączanie serwera GlassFish
+```
 ENV/glassfish4.1/bin/asadmin stop-domain
+```
